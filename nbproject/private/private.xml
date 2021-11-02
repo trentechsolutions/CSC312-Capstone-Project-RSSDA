@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Shuaib%20UWC/Desktop/Capstone%20Project/Code/Retail_Surveyor_Application/src/Admin.java</file>
-            <file>file:/C:/Users/Shuaib%20UWC/Desktop/Capstone%20Project/Code/Retail_Surveyor_Application/src/Statistics.java</file>
-            <file>file:/C:/Users/Shuaib%20UWC/Desktop/Capstone%20Project/Code/Retail_Surveyor_Application/src/LoginPage.java</file>
-            <file>file:/C:/Users/Shuaib%20UWC/Desktop/Capstone%20Project/Code/Retail_Surveyor_Application/src/User.java</file>
-            <file>file:/C:/Users/Shuaib%20UWC/Desktop/Capstone%20Project/Code/Retail_Surveyor_Application/manifest.mf</file>
-            <file>file:/C:/Users/Shuaib%20UWC/Desktop/Capstone%20Project/Code/Retail_Surveyor_Application/src/retail_surveyor_application/Retail_Surveyor_Application.java</file>
-            <file>file:/C:/Users/Shuaib%20UWC/Desktop/Capstone%20Project/Code/Retail_Surveyor_Application/src/SalesClerk.java</file>
+            <file>file:/C:/Users/Douwdels/Documents/GitHub/CSC312-Capstone-Project-RSSDA/src/SalesClerk.java</file>
+            <file>file:/C:/Users/Douwdels/Documents/GitHub/CSC312-Capstone-Project-RSSDA/src/rss/resources/backend/AdminOperations.java</file>
+            <file>file:/C:/Users/Douwdels/Documents/GitHub/CSC312-Capstone-Project-RSSDA/src/rss/resources/view/TestForm.java</file>
+            <file>file:/C:/Users/Douwdels/Documents/GitHub/CSC312-Capstone-Project-RSSDA/src/Admin.java</file>
+            <file>file:/C:/Users/Douwdels/Documents/GitHub/CSC312-Capstone-Project-RSSDA/src/rss/resources/backend/DatabaseConnection.java</file>
+            <file>file:/C:/Users/Douwdels/Documents/GitHub/CSC312-Capstone-Project-RSSDA/src/Statistics.java</file>
         </group>
     </open-files>
 </project-private>

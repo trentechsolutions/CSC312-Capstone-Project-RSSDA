@@ -1,3 +1,11 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import rss.resources.backend.DatabaseConnection;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -205,6 +213,11 @@ public class Admin extends javax.swing.JFrame {
         EditProd_btn.setText("EDIT");
         EditProd_btn.setBorder(null);
         EditProd_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        EditProd_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditProd_btnActionPerformed(evt);
+            }
+        });
         jPanel3.add(EditProd_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(572, 218, 81, 34));
 
         jButton1.setBackground(new java.awt.Color(204, 255, 255));
@@ -308,6 +321,43 @@ public class Admin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void EditProd_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProd_btnActionPerformed
+    
+    
+    Connection con = DatabaseConnection.getCon();
+        
+        //Assigning the product name, description, price, stock
+        int productID = Integer.parseInt(ProdID_txt.getText());
+        String productName = ProdName_txt.getText();
+        String productDesc = ProdDescript_txt.getText();
+        double priceAdd = Double.parseDouble(ProdPrice_txt.getText());
+        int stockAdd = Integer.parseInt(ProdQuantity_txt.getText());
+
+        //Connection connection = connect();
+        try{
+            //Statement st=con.createStatement();
+            
+            String sql = "UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_DESC = ?, PRICE = ?, STOCK = ? WHERE PRODUCT_ID = ? ";
+            PreparedStatement statement = con.prepareStatement(sql);
+            
+            statement.setString(1, productName);
+            statement.setString(2, productDesc);
+            statement.setDouble(3, priceAdd);
+            statement.setInt(4, stockAdd);
+            statement.setInt(5, productID);
+            
+            //st.executeUpdate("UPDATE PRODUCT( PRODUCT_NAME,PRODUCT_DESC, PRICE, STOCK) VALUES('" +  "','" + productName + "','" + productDesc + "','" + priceAdd + "','" + stockAdd + "') WHERE PRODUCT_ID ="+productID);
+            //st.executeUpdate("UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_DESC = ?, PRICE = ?, STOCK = ? WHERE PRODUCT_ID = ? "); 
+            JOptionPane.showMessageDialog(null, "product edited!");
+        }
+        catch (SQLException e1){
+            JOptionPane.showMessageDialog(null, e1);
+        }    
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_EditProd_btnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -14,8 +14,8 @@ public class DatabaseConnection{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://"
-                + "localhost:3306/retailsurveyorsystem?zeroDateTimeBehaviour="
-                + "convertToNull","root","99KJ@PROm");
+                + "localhost:3306/rss?zeroDateTimeBehaviour="
+                + "convertToNull","root","Douw1998");
             return con;
 
         }catch(Exception e){
