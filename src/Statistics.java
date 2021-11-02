@@ -1,3 +1,10 @@
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import rss.resources.backend.DatabaseConnection;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,8 +22,59 @@ public class Statistics extends javax.swing.JFrame {
      */
     public Statistics() {
         initComponents();
+        populateSalesTable();
+        
+        
+        
     }
 
+    public void populateStatsTable(){
+        try {
+            Connection con = DatabaseConnection.getCon();
+            Statement st=con.createStatement();
+            
+        make 3 different sql statements, using where for each date
+                store the variables into the string array
+                        addrow in table model for each of the 3 dates
+                                
+            
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }    
+    }
+    
+    public void populateSalesTable(){
+        try {
+            Connection con = DatabaseConnection.getCon();
+            Statement st=con.createStatement();
+                
+            String sql = "SELECT * FROM sale";
+            
+            Statement saleStat = con.createStatement();
+            ResultSet rs = saleStat.executeQuery(sql);
+            
+            while(rs.next()){
+                String salid = String.valueOf( rs.getInt("SALE_ID") );
+                String cleid = String.valueOf( rs.getInt("CLERK_ID") );
+                String dat = rs.getString("SALE_DATE") ;
+                String tot = String.valueOf( rs.getDouble("TOTAL") );
+                
+                String tbldata[] = {salid,cleid,dat,tot};
+                DefaultTableModel tblModel = (DefaultTableModel)Sales_table.getModel();
+                
+                tblModel.addRow(tbldata);
+            }
+            
+            
+            
+            con.close();
+            
+            }catch (Exception e) {
+            System.out.println(e);
+            }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,7 +218,7 @@ public class Statistics extends javax.swing.JFrame {
 
             },
             new String [] {
-                "DATE", "AVERAGE SALES", "AVERAGE PRODUCTS SOLD", "LOWEST SELLING PRODUCT"
+                "DATE", "AVERAGE SALES TOTALS", "TOTAL SOLD", "TOP SELLING PRODUCT"
             }
         ));
         Stats_table.setSelectionBackground(new java.awt.Color(0, 0, 204));
