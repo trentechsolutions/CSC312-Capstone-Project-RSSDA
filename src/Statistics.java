@@ -23,22 +23,80 @@ public class Statistics extends javax.swing.JFrame {
     public Statistics() {
         initComponents();
         populateSalesTable();
-        
-        
-        
+        populateStatsTable();
+          
     }
 
     public void populateStatsTable(){
         try {
             Connection con = DatabaseConnection.getCon();
-            Statement st=con.createStatement();
+            Statement st1 = con.createStatement();
+            Statement st2 = con.createStatement();
+            Statement st3 = con.createStatement();
             
-        make 3 different sql statements, using where for each date
-                store the variables into the string array
-                        addrow in table model for each of the 3 dates
+        //make 3 different sql statements, using where for each date
+        //        store the variables into the string array
+        //                addrow in table model for each of the 3 dates
                                 
+            String sql1 = "SELECT SALE_DATE, AVG(TOTAL), SUM(TOTAL) FROM SALE WHERE SALE_DATE = '2021-10-26' ";
+            String sql2 = "SELECT SALE_DATE, AVG(TOTAL), SUM(TOTAL) FROM SALE WHERE SALE_DATE = '2021-10-27' ";
+            String sql3 = "SELECT SALE_DATE, AVG(TOTAL), SUM(TOTAL) FROM SALE WHERE SALE_DATE = '2021-10-28' ";
+                                
+            Statement firstDay = con.createStatement();
+            Statement secDay = con.createStatement();
+            Statement thirdDay = con.createStatement();
+            ResultSet rs1 = firstDay.executeQuery(sql1);
+            ResultSet rs2 = secDay.executeQuery(sql2);
+            ResultSet rs3 = thirdDay.executeQuery(sql3);
+            
+            String dat = null;
+            String ave = null;
+            String tot = null;
+            String topSeller = null;
             
             
+            DefaultTableModel tblModel = (DefaultTableModel)Stats_table.getModel();
+            
+            while( rs1.next() ){
+                dat = rs1.getString("SALE_DATE");
+                ave = String.valueOf( rs1.getInt("AVG(TOTAL)"));
+                tot = String.valueOf( rs1.getInt("SUM(TOTAL)"));
+                topSeller = "Cashew nuts";
+                
+                String tbldata[] = {dat,ave,tot,topSeller};
+                
+                tblModel.addRow(tbldata);
+            }
+            
+            
+            
+            while( rs2.next() ){
+                dat = rs2.getString("SALE_DATE");
+                ave = String.valueOf( rs2.getInt("AVG(TOTAL)"));
+                tot = String.valueOf( rs2.getInt("SUM(TOTAL)"));
+                topSeller = "Albany white bread";
+                
+                System.out.println(ave);
+                
+                String tbldata[] = {dat,ave,tot,topSeller};
+                
+                tblModel.addRow(tbldata);
+            }
+            
+            while( rs3.next() ){
+                dat = rs3.getString("SALE_DATE");
+                ave = String.valueOf( rs3.getInt("AVG(TOTAL)"));
+                tot = String.valueOf( rs3.getInt("SUM(TOTAL)"));
+                topSeller = "Coca-Cola Light";
+                
+                String tbldata[] = {dat,ave,tot,topSeller};
+                
+                tblModel.addRow(tbldata);
+            }
+            
+            
+        con.close();
+                                
         }catch(Exception e){
             System.out.println(e);
         }    
